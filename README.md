@@ -49,30 +49,33 @@ http://localhost:5173
 
 
 ## Architecture
-┌─────────────────────────────────────────────────────┐
-│                   Browser                           │
-│                                                     │
-│  React 18 + Recharts + Vite                         │
-│  ┌──────────┐ ┌─────────┐ ┌──────────┐ ┌─────────┐  │
-│  │Dashboard │ │  Crops  │ │  Soil   │ │Livestock│   │
-│  └──────────┘ └─────────┘ └──────────┘ └─────────┘  │
-│  ┌──────────┐ ┌─────────────────────────────────┐   │
-│  │ Weather  │ │      Disease Analysis           │   │
-│  └──────────┘ └─────────────────────────────────┘   │
-└──────────┬──────────────────────────┬───────────────┘
-           │ POST /api/chat            │ GET (direct)
-           ▼                           ▼
-┌──────────────────┐      ┌─────────────────────────┐
-│  Java Spring Boot│      │  Open-Meteo API (Weather)│
-│  Port 8080       │      │  Nominatim (Location)    │
-│                  │      │  (Both free, no key)     │
-│  AIController    │      └─────────────────────────┘
-│  CorsConfig      │
-└────────┬─────────┘
-         │ Authorization: Bearer gsk_xxx
-         ▼
-┌──────────────────────────────────────┐
-│         Groq API                     │
-│  Text:   llama-3.3-70b-versatile     │
-│  Vision: llama-4-scout-17b-16e       │
-└──────────────────────────────────────┘
+
+```
+                        Browser
+                           |
+        React 18 + Recharts + Vite
+   -----------------------------------------
+   | Dashboard | Crops | Soil | Livestock |
+   -----------------------------------------
+   | Weather              | Disease Analysis |
+   -----------------------------------------
+
+           | POST /api/chat        | GET (direct)
+           ▼                        ▼
+
+   ---------------------     ---------------------------
+   | Java Spring Boot |     | Open-Meteo API (Weather) |
+   | Port 8080        |     | Nominatim (Location)     |
+   | AIController     |     | (Free APIs)              |
+   | CorsConfig       |     ---------------------------
+   ---------------------
+           |
+           | Authorization: Bearer gsk_xxx
+           ▼
+
+        -------------------------
+        |      Groq API         |
+        | Text: llama-3.3-70b   |
+        | Vision: llama-4       |
+        -------------------------
+```
