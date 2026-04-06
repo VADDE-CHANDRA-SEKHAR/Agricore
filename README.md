@@ -48,12 +48,13 @@ http://localhost:5173
 - ⬇️ CSV export for all data
 
 
+## Architecture
 ┌─────────────────────────────────────────────────────┐
-│                   Browser                            │
-│                                                      │
-│  React 18 + Recharts + Vite                          │
+│                   Browser                           │
+│                                                     │
+│  React 18 + Recharts + Vite                         │
 │  ┌──────────┐ ┌─────────┐ ┌──────────┐ ┌─────────┐  │
-│  │Dashboard │ │  Crops  │ │  Soil   │ │Livestock│  │
+│  │Dashboard │ │  Crops  │ │  Soil   │ │Livestock│   │
 │  └──────────┘ └─────────┘ └──────────┘ └─────────┘  │
 │  ┌──────────┐ ┌─────────────────────────────────┐   │
 │  │ Weather  │ │      Disease Analysis           │   │
@@ -64,14 +65,14 @@ http://localhost:5173
 ┌──────────────────┐      ┌─────────────────────────┐
 │  Java Spring Boot│      │  Open-Meteo API (Weather)│
 │  Port 8080       │      │  Nominatim (Location)    │
-│                  │      │  (Both free, no key)      │
+│                  │      │  (Both free, no key)     │
 │  AIController    │      └─────────────────────────┘
 │  CorsConfig      │
 └────────┬─────────┘
          │ Authorization: Bearer gsk_xxx
          ▼
 ┌──────────────────────────────────────┐
-│         Groq API                      │
-│  Text:   llama-3.3-70b-versatile      │
+│         Groq API                     │
+│  Text:   llama-3.3-70b-versatile     │
 │  Vision: llama-4-scout-17b-16e       │
 └──────────────────────────────────────┘
