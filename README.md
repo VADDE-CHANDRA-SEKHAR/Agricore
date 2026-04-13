@@ -26,7 +26,9 @@ GROQ_API_KEY=
 ### 3. Run the backend
 cd backend
 export GROQ_API_KEY=   # Mac/Linux
+
 set GROQ_API_KEY=      # Windows
+
 mvn spring-boot:run
 
 ### 4. Run the frontend
