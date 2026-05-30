@@ -39,6 +39,8 @@ npm run dev
 ### 5. Open the app
 http://localhost:5173
 
+Live demo vercel : https://agricore-seven.vercel.app
+
 ## Features
 - 📊 Dashboard with live KPI cards
 - 🌾 Crops & Yield tracking with charts
